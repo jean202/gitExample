@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형웹WEBSRE26</title>
+    <meta name="keywords" content="웹스리퍼블릭, 홈페이지제작, 웹표준홈페이지제작, 반응형홈페이지제작, 모바일홈페이지제작, 웹접근성홈페이지제작, 쇼핑몰제작, 기업홍보홈페이지제작">
+    <meta name="description" content="반응형웹사이트제작, 홈페이지제작, 쇼핑몰제작, 고퀄리티 웹사이트 제작 전문 업체, 웹스리퍼블릭, 홈페이지제작, 웹표준홈페이지제작, 반응형홈페이지제작, 모바일홈페이지제작, 웹접근성홈페이지제작, 쇼핑몰제작, 기업홍보홈페이지제작">
+    <link rel="stylesheet" type="text/css" href="/bizdemo72299/inc/css/default.css">
+    <script src="/bizdemo72299/inc/js/jquery181.js"></script>
+    <script src="/bizdemo72299/inc/js/parallax.js"></script>
+    <script src="/bizdemo72299/inc/js/design.js"></script>
+    <script src="/bizdemo72299/inc/js/jqueryui.js"></script>
+    <link rel="stylesheet" type="text/css" href="common.css">
+    <link rel="stylesheet" type="text/css" href="layout.css">
+    <link rel="stylesheet" type="text/css" href="responsive.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="/bizdemo72299/inc/css/sub.css">
+    <link rel="stylesheet" type="text/css" href="/bizdemo72299/inc/mall_css/board.css">
+    <link rel="stylesheet" type="text/css" href="/bizdemo72299/inc/css/websre_plus.css">
+    <link rel="stylesheet" type="text/css" href="wr_bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/bizdemo72299/inc/css/htmlSource.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <!--[if lt IE 9]>
+<script src="/bizdemo72299/inc/js/html5.js"></script>
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+</head>
+<body>
+    <!--
+        전체상품보기 버튼 시작 영역입니다.
+        웹스리퍼블릭 샘플 템플릿에서는 전체상품이며
+        추후에 버튼으로 활용을 하시려면 a 태그 링크값과
+        p 태그의 내용을 변경해주시면 됩니다.
+     -->
+    <style>
+        /* 전체 상품 보기 버튼 스타일 입니다.
+        단순복사 이후에는 꼭 지우셔야 합니다. */
+        #all_product {
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            z-index: 10000
+        }
+        #all_product>a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background:#000 url(/bizdemo72299/img/images/wr_plus.png) center top no-repeat;
+            color: #fff;
+            border-radius: 62px;
+            transition: all 0.3s ease
+        }
+        #all_product>a:hover {
+            background-image: none;
+            background-color: #21bbb1;
+            width: 200px
+        }
+        #all_product>a:hover p {
+            display: block;
+            opacity: 1;
+            transition-delay: 0.31s
+        }
+        #all_product>a>p {
+            opacity: 0;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            text-align: center;
+            line-height: 50px
+        }
+        @media screen and (max-width:480px) {
+            #all_product {
+                position: fixed;
+                bottom: 25px;
+                left: 25px
+            }
+        }
+    </style>
+    <div id="all_product">
+        <a href="http://shop-websrepublic.co.kr/" target="_blank" title="웹스리퍼블릭 전체상품 보러가기">
+            <p>전체 상품 보기</p>
+        </a>
+    </div>
+    <!-- 전체상품보기 버튼 끝 -->
+    <!--div:wrap//-->
+    <div id="main_wrap">
+        <!--공통상단메뉴-->
+        <div id="header" style="overflow: hidden; height: 100px;">
+                         <div id="top_info">
+                <ul>
+                    <li><a href="/bizdemo72299/member/login.php">로그인</a></li>
+                    <li><a href="/bizdemo72299/member/join.php">회원가입</a></li>
+                    <li><a href="/bizdemo72299/mypage/mypage2.php?&amp;mode=basketList" title="">장바구니</a></li>
+                    <li><a href="/bizdemo72299/member/login.php" title="">주문조회</a></li>
+                </ul>
+            </div>
+                         <div id="header_wrap" class="res_wrap">
+                <h1 class="logo"><a href="/bizdemo72299">웹스리퍼블릭</a></h1>
+                <div id="top_icon" class="tal">
+                    <ul>
+                        <a href="#" target="_blank">
+                            <li><img src="/bizdemo72299/img/images/bottom_icon1.png"></li>
+                        </a>
+                        <a href="#" target="_blank">
+                            <li><img src="/bizdemo72299/img/images/bottom_icon2.png"></li>
+                        </a>
+                    </ul>
+                </div>
+                <div id="gnb">
+                    <ul class="menu" id="listId">
+                        <li class="first">
+                            <a href="/bizdemo72299/company/sub1.php">COMPANY</a>
+                            <div class="submenu" style="overflow: hidden; height: 1px;">
+                                <ul>
+                                    <li><a href="/bizdemo72299/company/sub1.php">회사소개</a></li>
+                                    <li><a href="/bizdemo72299/company/sub2.php">연혁</a></li>
+                                    <li><a href="/bizdemo72299/company/sub3.php">찾아오시는길</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/business/sub1.php">BUSINESS</a>
+                            <div class="submenu" style="overflow: hidden; height: 1px;">
+                                <ul>
+                                    <li><a href="/bizdemo72299/business/sub1.php">사업안내</a></li>
+                                    <li><a href="/bizdemo72299/business/sub2.php">사업영역</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/product/sub1.php">PRODUCT</a>
+                            <div class="submenu" style="overflow: hidden; height: 1px;">
+                                <ul>
+                                    <li><a href="/bizdemo72299/product/sub1.php">제품소개(일반형)</a></li>
+                                    <li><a href="/bizdemo72299/product/sub2.php">제품소개(고급형)</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/customer/sub1.php">CUSTOMER</a>
+                            <div class="submenu" style="overflow: hidden; height: 1px;">
+                                <ul>
+                                    <li><a href="/bizdemo72299/customer/sub1.php">공지사항</a></li>
+                                    <li><a href="/bizdemo72299/customer/sub2.php">자주묻는질문</a></li>
+                                    <li><a href="/bizdemo72299/customer/sub3.php">질문과답변</a></li>
+                                    <li><a href="/bizdemo72299/customer/sub4.php">온라인문의</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/mall/mall1.php">MALL</a>
+                            <div class="submenu" style="overflow: hidden; height: 1px;">
+                                <ul>
+                                    <li class="">
+<a href="/bizdemo72299/mall/mall1.php?topmenu=&amp;mode=list&amp;cate_code=CA100001"><span class="eng">영상제품</span></a>
+</li><li class="">
+<a href="/bizdemo72299/mall/mall1.php?topmenu=&amp;mode=list&amp;cate_code=CA100002"><span class="eng">음향제품</span></a>
+</li><li class="">
+<a href="/bizdemo72299/mall/mall1.php?topmenu=&amp;mode=list&amp;cate_code=CA100004"><span class="eng">개인가전</span></a>
+</li><li class="">
+<a href="/bizdemo72299/mall/mall1.php?topmenu=&amp;mode=list&amp;cate_code=CA100006"><span class="eng">전동공구</span></a>
+</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/plus/sub1.php">SAMPLE</a>
+                            <div class="submenu" style="overflow: hidden; height: 1px;">
+                                <ul>
+                                    <li><a href="/bizdemo72299/plus/sub1.php">Layout</a></li>
+                                    <li><a href="/bizdemo72299/plus/sub2.php">Icon</a></li>
+                                    <li><a href="/bizdemo72299/plus/sub3.php">Heading, Btn</a></li>
+                                    <li><a href="/bizdemo72299/plus/sub4.php">Html source</a></li>
+                                    <li><a href="/bizdemo72299/plus/sub5.php">Instagram gallery</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--공통상단메뉴-->
+        <!--모바일메뉴-->
+        <div id="mobile_header">
+            <div class="posr">
+                <h1 class="logo"><a href="/bizdemo72299">웹스리퍼블릭</a></h1>
+                <!-- 전체메뉴버튼 -->
+                <a href="#none" class="open_m_menu">
+                    <div id="callNav">
+                        <div class="bar1"></div>
+                        <div class="bar2"></div>
+                        <div class="bar3"></div>
+                    </div>
+                </a>
+                <!-- 전체메뉴버튼 -->
+                <div class="mobile_menu shedow2">
+                                         <div class="top_icon">
+                        <a href="/bizdemo72299/member/login.php"><span>로그인</span></a>
+                        <a href="/bizdemo72299/member/join.php"><span>회원가입</span></a>
+                        <a href="/bizdemo72299/mypage/mypage2.php?&amp;mode=basketList"><span>장바구니</span></a>
+                        <a href="/bizdemo72299/member/login.php"><span>주문조회</span></a>
+                    </div>
+                                         <ul id="listId">
+                        <li class="first">
+                            <a href="/bizdemo72299/company/sub1.php">COMPANY</a>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a href="/bizdemo72299/company/sub1.php">회사소개</a></li>
+                                    <li><a href="/bizdemo72299/company/sub2.php">연혁</a></li>
+                                    <li class="last"><a href="/bizdemo72299/company/sub3.php">찾아오시는길</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/business/sub1.php">BUSINESS</a>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a href="/bizdemo72299/business/sub1.php">사업안내</a></li>
+                                    <li class="last"><a href="/bizdemo72299/business/sub2.php">사업영역</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/product/sub1.php">PRODUCT</a>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a href="/bizdemo72299/product/sub1.php">제품소개(일반형)</a></li>
+                                    <li class="last"><a href="/bizdemo72299/product/sub2.php">제품소개(고급형)</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/customer/sub1.php">CUSTOMER</a>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a href="/bizdemo72299/customer/sub1.php">공지사항</a></li>
+                                    <li><a href="/bizdemo72299/customer/sub2.php">자주묻는질문</a></li>
+                                    <li><a href="/bizdemo72299/customer/sub3.php">질문과답변</a></li>
+                                    <li class="last"><a href="/bizdemo72299/customer/sub4.php">온라인문의</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/mall/mall1.php">MALL</a>
+                            <div class="submenu">
+                                <ul>
+                                    <li class="">
+<a href="/bizdemo72299/mall/mall1.php?topmenu=&amp;mode=list&amp;cate_code=CA100001"><span class="eng">영상제품</span></a>
+</li><li class="">
+<a href="/bizdemo72299/mall/mall1.php?topmenu=&amp;mode=list&amp;cate_code=CA100002"><span class="eng">음향제품</span></a>
+</li><li class="">
+<a href="/bizdemo72299/mall/mall1.php?topmenu=&amp;mode=list&amp;cate_code=CA100004"><span class="eng">개인가전</span></a>
+</li><li class="">
+<a href="/bizdemo72299/mall/mall1.php?topmenu=&amp;mode=list&amp;cate_code=CA100006"><span class="eng">전동공구</span></a>
+</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="/bizdemo72299/plus/sub1.php">SAMPLE</a>
+                            <div class="submenu">
+                                <ul>
+                                    <li><a href="/bizdemo72299/plus/sub1.php">Layout</a></li>
+                                    <li><a href="/bizdemo72299/plus/sub2.php">Icon</a></li>
+                                    <li><a href="/bizdemo72299/plus/sub3.php">Heading, Btn</a></li>
+                                    <li><a href="/bizdemo72299/plus/sub4.php">Html source</a></li>
+                                    <li><a href="/bizdemo72299/plus/sub5.php">Instagram gallery</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--모바일메뉴-->
+<!--공통상단메뉴-->
+
+<!--메인스타일시트-->
+<link rel="stylesheet" type="text/css" href="./inc/css/main.css">
+<!--메인스타일시트-->
+
+<!--메인슬라이드스트립트-->
+<script src="./inc/js/banner_slider2.js"></script>
+<!--메인슬라이드스트립트-->
+
+<!--메인슬라이드-->
+<div id="main_gal">
+    <div class="banner_container">
+        <div id="banner_content">
+            <div class="img1" style="left: 1406px;"></div>
+            <div class="img2" style="left: -1406px;"></div>
+            <div class="img3" style="left: 0px;"></div>
+        </div>
+        <div id="btn_navi"> 
+            <button id="btn_prev_banner">prev</button>
+            <button id="btn_next_banner">next</button> 
+        </div>
+        <div class="slogan">
+            <span class="tit">WEB's REpublic<br>For Your Business</span>
+            <p class="lh23">웹사이트는 고객이 기업의 이미지를 구축하고 접근하는데 가장 기본적인 단계로서 이미지 마케팅 및 정보 전달을 위한 명확한 전략을 수집하고 설계해야합니다.<span class="blind1024"><br></span> 웹스리퍼블릭은 클라이언트의 성공적인 비지니스와 운영의 효율성을 높이기 위하여 다년간 쌓아온 노하우로 사이트 구축을 도와드리겠습니다.</p>
+        </div>
+    </div> 
+</div>
+<!--메인슬라이드-->
+
+<!--메인STAFF-->
+<div id="main_icon">
+ <div class="pdT70"></div>
+    <div class="title">
+        <h3>STAFF</h3>
+        <p>WEB's REpublic<span class="add480"><br></span> People</p>
+    </div>
+ <div class="pdT50"></div>
+    <div class="icons res_wrap">
+        <ul class="tac">
+            <li>
+                <a href="#">
+                    <img src="./img/images/member_img1.png">
+                    <p class="fs20 pdT20">Chief Design &amp; Creative Director</p>
+                    <div class="icon_line"></div>
+                    <p class="lh20 pdT5">·패션디자인학 전공<br>
+                    ·2005년 웹디자인과정이수<br>
+                    ·2010년 웹에이전시 디자인팀장<br>
+                    ·2012년 (주)와플즈 설립<br>
+                    ·2014년 PMP 교육과정 이수<br></p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/images/member_img2.png">
+                    <p class="fs20 pdT20">Chief Design &amp; Creative Director</p>
+                    <div class="icon_line"></div>
+                    <p class="lh20 pdT5">·웹디자인경력 6년<br>
+                    ·2010년 컴퓨터디자인 전공<br>
+                    ·2014년 (주)와플즈 디자인파트장<br>
+                    ·2015년 (현)웹스리퍼블릭 디자인팀장<br>
+                    ·웹접근성,웹표준 퍼블리싱 교육 이수<br></p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="./img/images/member_img3.png">
+                    <p class="fs20 pdT20">Chief strategy &amp; Marketing Director</p>
+                    <div class="icon_line"></div>
+                    <p class="lh20 pdT5">·웹개발경력 10년<br>
+                    ·퍼블리싱경력 5년<br>
+                    ·컴퓨터공학과 전공<br>
+                    ·현 웹스리퍼블릭 기획/마케팅전담<br>
+                    ·2015년 프리랜서팀 웹스리퍼블릭 설립<br></p>
+                </a>
+            </li>
+        </ul>
+    </div>
+ <div class="pdB70"></div>
+</div>
+<!--메인STAFF-->
+
+<!--메인중간이미지-->
+<div id="middle_bg"><a href="#;">PortFolio</a></div>
+<div class="clb"></div>
+<!--메인중간이미지-->
+
+<!--메인하단링크배너-->
+<div id="main_info">
+    <div class="main_box">
+        <ul>
+            <li class="pic img_zoom1"></li>
+            <li class="txt">
+                <h4>AU COMMERCE</h4>
+                <p class="lsm1 fs14 lh18 pdT20">AU커머스 반응형웹사이트<br><span>MaKe by web's republic</span></p>
+                <a href="http://eaucom.cafe24.com/index_ch.php" target="_blank" class="bt txt1 fw_n">자세히보기</a>
+            </li>
+        </ul>
+        <ul>
+            <li class="pic2 blind768"></li>
+            <li class="txt">
+                <h4>WEBSRE17</h4>
+                <p class="lsm1 fs14 lh18 pdT20">WEBSRE17 반응형웹사이트<br><span>MaKe by web's republic</span></p>
+                <a href="http://bdmp-007.cafe24.com/bizdemo23366/" target="blank" class="bt txt1 fw_n">자세히보기</a>
+            </li>
+            <li class="pic2 add768"></li>
+        </ul>
+        <ul>
+            <li class="pic3 blind1280"></li>
+            <li class="pic3 add768"></li>
+            <li class="txt">
+                <h4>MANNER CAR</h4>
+                <p class="lsm1 fs14 lh18 pdT20">매너카 차량 견적시스템<br><span>MaKe by web's republic</span></p> 
+                <a href="#;" class="bt txt1 fw_n">자세히보기</a>
+            </li>
+            <li class="pic3 add1280 blind768"></li>
+        </ul>
+        <ul>
+            <li class="txt">
+                <h4>FUNCH TV</h4>
+                <p class="lsm1 fs14 lh18 pdT20">펀치TV 낚시UCC커뮤니티<br><span>MaKe by web's republic</span></p>
+                <a href="#;" class="bt txt1 fw_n">자세히보기</a>
+            </li>
+            <li class="pic4"></li>
+        </ul>
+        <ul>
+            <li class="pic5 add1280"></li>
+            <li class="txt">
+                <h4>DUVIS MODERN</h4>
+                <p class="lsm1 fs14 lh18 pdT20">듀비스 국제결혼전문회<br><span>MaKe by web's republic</span></p>
+                <a href="#;" class="bt txt1 fw_n">자세히보기</a>
+            </li>
+            <li class="pic5 blind1280"></li>
+        </ul>
+        <ul>
+            <li class="pic6 add1280 blind768"></li>
+            <li class="txt">
+                <h4>WEBSRE20</h4>
+                <p class="lsm1 fs14 lh18 pdT20">WEBSRE20 일반형웹사이트<br><span>MaKe by web's republic</span></p>
+                <a href="http://bdmp-007.cafe24.com/bizdemo23639/" target="_blank" class="bt txt1 fw_n">자세히보기</a>
+            </li>
+            <li class="pic6 blind1280"></li>
+            <li class="pic6 add768"></li>
+        </ul>
+    </div>
+</div>
+<div class="clb"></div>
+<!--메인하단링크배너-->
+
+<!--메인하단4개배너-->
+<div class="section">
+    <div class="main_picture">
+        <p class="title">WEBSITE Building Process</p>
+        <p class="contents">웹사이트를 구축하고 나면 관리가 소홀해 지는 경우가 빈번합니다. 웹사이트는 클라이언트의 비즈니스와 그에 따른 정보를 빠르게 업데이트 하므로써 지속적이어야 합니다. <span class="blind1024"><br></span>
+        웹스리퍼블릭은 국내외 다양한 프로젝트를 통해 노하우를 차근차근 쌓아왔으며, 전문적인 지식과 경험을 바탕으로 클라이언트들의 니즈를 충족시켜드릴 것입니다. </p>
+        <div class="main_picture_list">
+            <ul>
+                <li>
+                    <a href="/bizdemo72299/business/sub2.php">
+                    <img id="picture1" src="./img/images/main_bottom_img1.png" alt="DESIGN">
+                    <p>DESIGN</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/bizdemo72299/business/sub2.php">
+                    <img id="picture2" src="./img/images/main_bottom_img2.png" alt="picture2">
+                    <p>DEVELOPMENT</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/bizdemo72299/business/sub2.php">
+                    <img id="picture3" src="./img/images/main_bottom_img3.png" alt="PUBLISHING">
+                    <p>PUBLISHING</p>
+                    </a>
+                </li>
+                <li class="last">
+                    <a href="/bizdemo72299/business/sub2.php">
+                    <img id="picture4" src="./img/images/main_bottom_img4.png" alt="APPLICATION">
+                    <p>APPLICATION</p>
+                    </a>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="clb"></div>
+<!--메인하단4개배너-->
+
+<!--공통하단메뉴-->
+<!--공통하단-->
+    <div id="footer">
+        <div id="footer_wrap" class="res_wrap">
+            <span><a href="#" id="btn_top" class="go_scroll">TOP</a></span>
+            <div class="clb"></div>
+            <div class="tac pdT40">
+                <img src="/bizdemo72299/img/images/wlogo.png" width="120">
+                <p class="clb pdT30 fs12 lh17">
+                <strong>상호명</strong> (주)웹스리퍼블릭 
+                <strong>대표자</strong> 주필규 사업자번호 607-88-00037 Tel 1800-9356 Fax 0505-300-9356 <span class="blind768"><br></span>
+                <strong>Address</strong> 대전광역시 서구 괴정동 85-39번지 202호 <strong>Email</strong> websre@naver.com 
+                </p>
+                <p class="coryright fs11 pdT2">Copyright 2015 WEB's REpublic. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+    <!--공통하단-->
+</div>
+<!--//div:wrap-->
+
+
+
+<!--공통하단메뉴-->
+<script language="javascript" type="text/javascript" src="/cjs/javascript.lib.js?date=1458686145"></script>
+
+            <script type="text/javascript">
+            var JsHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+            var sTime = new Date().getTime();
+            document.write(unescape("%3Cscript id='log_script' src='" + JsHost + ".cafe24.com/weblog.js?uid=bizdemo72299&t=" + sTime + "' type='text/javascript'%3E%3C/script%3E"));
+            </script><script id="log_script" src="http://.cafe24.com/weblog.js?uid=bizdemo72299&amp;t=1568329939288" type="text/javascript"></script>
+        </body></html>
