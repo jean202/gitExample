@@ -2,11 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-<<<<<<< HEAD
-/dataSources/
-=======
-/../../../:\test\.idea/dataSources/
->>>>>>> 1b16e966a2c079246674c7a38cdd2dddde7ec764
+/../../../../:\test\javaTest\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
