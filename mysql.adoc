@@ -1,0 +1,74 @@
+= Mysql guide(for windows)
+
+공식 문서 참고
+https://dev.mysql.com/doc/refman/8.0/en/windows-install-archive.html
+
+*_Mysql ZIP archive file install_*
+- by windows 명령 프롬프트
+
+`1) Mysql을 portable 하게 설치해야 하는 이유`
+
+> port·a·ble
+>
+    a.들고 다닐 수 있는
+    b.휴대용의
+
+
+
+*portable program*
+
+    설치해서 사용해야 하는 프로그램을 설치 없이 사용할수 있도록 만든것을 말한다. 프로그램 가상화를 이용하는 경우도 있고, 프로그램 자체가 애초에 설치과정 없이 standalone으로 동작하는 경우도 있다.
+
+*standalone 방식*
+
+    서버가 부팅할 때 또는 따로 명령을 내려 데몬(백그라운드에서 요청을 기다렸다가 요청이 들어오면 혼자서 처리해주는 프로그램)을 작동시키는 방식으로, 클라이언트의 요청이 언제 들어올지 모르는 상황에서 항상 서비스가 가능하며 다른 메커니즘 없이 바로 네트워크 서비스 데몬이 클라이언트의 요청을 처리한다는 점 등의 장점이 있다.서버 파일 자체로 완전하게 구동이 가능하다.
+
+*portable program의 장점*
+
+1. 컴퓨터에 영향을 주지 않는다.
+설치 과정이 불필요하므로 레지스트리 등을 작성하지 않으니 컴퓨터에 영향을 미치지 않는다.[2] 삭제도 그냥 지우면 되므로 매우 간단하다.
+
+2. 어디에서나 쓸 수 있다.
+USB메모리 같은 이동 가능한 저장매체에 포터블 프로그램을 넣어서 다닐 경우 어떤 컴퓨터에서도 프로그램을 설치와 설정 변경 없이 바로, 그대로 쓸 수 있다.
+
+
+`2) Mysql portable program 설치하기`
+
+(1) mysql 공식 홈페이지에서 원하는 버젼의 ZIP Archive 파일을 다운로드 받는다.
+
+(2) 설치를 원하는 폴더에 해당 파일의 압축을 푼다.
+
+    ※ 파일을 C:\Program Fiels 아래에 넣지 말고 따로 관리하는 폴더 안에 넣도록 하자.
+
+->  Program Fiels 같은 경우 폴더 이름에 공백을 포함하고 있어 추후 동작 시에 경로상의 문제를 일으킬 수 있다.
+
+->  Program Fiels에 있는 다른 대부분의 파일들은 Microsoft Installer로 설치하여 해당 위치에 자리하게 된 프로그램들인데(registry값 등 제어판에서 프로그램을 삭제한 후에도 많은 찌꺼기를 남기는 아이들)이 프로그램들과 함께 두면 portable program의 분류가 어려워 질 수 있다.
+
+->  portable(휴대용)의 의미에 맞게 사용자가 직접 관리한다는 의미에서 평소 자주 사용하는 폴더 안에 넣어놓고 사용하는 것이 좋다.
+
+(3) cmd를 관리자 권한으로 실행한다. (단축키 Windows R -> cmd -> Ctrl Shift Enter)
+
+(4) windows 명령 프롬프트 창에서 ZIP Archive 파일의 압축을 풀어 놓은 위치로 이동한 후 bin 폴더 안까지 들어간다. (cd 명령어 사용)
+
+(5) Mysql 데몬 초기화 명령어를 입력한다.
+
+    mysqld --initialize
+
+-> Zip Archive 파일의 압축 해제 폴더에 data    폴더가 생겼는지 확인한다.
+
+(6) Mysql 설치 명령어를 입력한다.
+
+    mysqld --install
+
+-> 다음과 같은 로그를 통해 정상적으로 설치되었음을 확인한다.
+
+    Service successfully installed.
+
+3) Mysql 실행 파일로 구동시키기(서비스 사용X)
+Windows 서비스를 사용하지 않고도 Mysql Server를 구동시킬 수 있다.
+CLI환경 (명령 프롬프트)에서 진행하며, 공식 문서()를 참고하였다.
+
+> 세번째로는 portable(휴대용)의 의미에 맞게 사용자가 직접 관리한다는 의미에서 평소 자주 사용하는 폴더 안에 넣어놓고 사용하는 것이 좋다.
+> dfs
+
+> dmysql root password 바꿔줘야 mysqladmin -u root -p shutdown이 가능
