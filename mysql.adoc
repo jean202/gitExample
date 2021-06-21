@@ -23,7 +23,7 @@ https://dev.mysql.com/doc/refman/8.0/en/windows-install-archive.html
 
     서버가 부팅할 때 또는 따로 명령을 내려 데몬(백그라운드에서 요청을 기다렸다가 요청이 들어오면 혼자서 처리해주는 프로그램)을 작동시키는 방식으로, 클라이언트의 요청이 언제 들어올지 모르는 상황에서 항상 서비스가 가능하며 다른 메커니즘 없이 바로 네트워크 서비스 데몬이 클라이언트의 요청을 처리한다는 점 등의 장점이 있다.서버 파일 자체로 완전하게 구동이 가능하다.
 
-*portable program의 장점*
+> *portable program의 장점*
 
 1. 컴퓨터에 영향을 주지 않는다.
 설치 과정이 불필요하므로 레지스트리 등을 작성하지 않으니 컴퓨터에 영향을 미치지 않는다.[2] 삭제도 그냥 지우면 되므로 매우 간단하다.
@@ -31,6 +31,7 @@ https://dev.mysql.com/doc/refman/8.0/en/windows-install-archive.html
 2. 어디에서나 쓸 수 있다.
 USB메모리 같은 이동 가능한 저장매체에 포터블 프로그램을 넣어서 다닐 경우 어떤 컴퓨터에서도 프로그램을 설치와 설정 변경 없이 바로, 그대로 쓸 수 있다.
 
+'''
 
 `2) Mysql portable program 설치하기`
 
@@ -56,19 +57,87 @@ USB메모리 같은 이동 가능한 저장매체에 포터블 프로그램을 �
 
 -> Zip Archive 파일의 압축 해제 폴더에 data    폴더가 생겼는지 확인한다.
 
-(6) Mysql 설치 명령어를 입력한다.
+(6) 주의사항
 
     mysqld --install
 
--> 다음과 같은 로그를 통해 정상적으로 설치되었음을 확인한다.
+-> 이것은 windows service에 등록하는 방식이다. noinstall상태로 쓰기로 하였으니 이것은 제외하도록 하자.
 
-    Service successfully installed.
+'''
 
 3) Mysql 실행 파일로 구동시키기(서비스 사용X)
+
 Windows 서비스를 사용하지 않고도 Mysql Server를 구동시킬 수 있다.
 CLI환경 (명령 프롬프트)에서 진행하며, 공식 문서()를 참고하였다.
 
-> 세번째로는 portable(휴대용)의 의미에 맞게 사용자가 직접 관리한다는 의미에서 평소 자주 사용하는 폴더 안에 넣어놓고 사용하는 것이 좋다.
-> dfs
+mysqld 명령어를 쳤을 때 mysql server가 동작하고 있는지 확인하기
 
-> dmysql root password 바꿔줘야 mysqladmin -u root -p shutdown이 가능
+-> mysql server에 할당된 포트번호(기본값 3306)가 열려 있는지 확인한다.
+
+특정 포트가 열려있는지 확인하는 방법
+특정 포트 열려있는지 확인하는 명령어
+
+    netstat -ano | findstr :3306(mysql server port)
+
+telnet [IP 또는 도메인] [포트]
+
+[source,shell]
+----
+J
+ 8.0.2dofp"�.9s9
+                    "=
+                      8!([caching_sha2_password
+
+Connection to host lost.
+
+C:\Windows\system32>
+----
+
+→ 이런 결과가 나오면 정상이다(뭐라도 나오면 열려있는것). Connection lost라고 나오는 이유는 제대로 된 정보를 가지고 3306port 에 접근한 것이 아니기 때문에 연결에 실패하게 되는 것이다.
+
+
+
+curl로 확인 : API호출을 해서 tcp로 한번 찔러본다.
+
+root 사용자 비밀번호 재설정~~
+
+mysql에서 exit로 빠져나오고
+
+mysql종료시키기
+
+    mysqladmin -u root -p shutdown
+
+정상적으로 종료되었는지 확인 해 보기
+
+-> 3306 포트가 닫혀 있으면
+
+[source,bash]
+----
+Connecting To 127.0.0.1...Could not open connectionto the host, on port 3306: Connect failed
+----
+
+이런  로그가 나타난다.
+
+단, mysql의 root password를 바꿔줘야 종료 명령어 사용이 가능하니 mysql에 접속하자마자 root계정의 초기 비밀번호를 변경하는 과정을 잊지 말도록 하자!
+
+'''
+
+`4) batch파일 만들기`
+
+빠르고 편리하게 mysql을 끄고 켜기 위해 명령어를 batch파일로 만들어 놓자
+
+mysql bin 폴더 안에 xxx.bat 파일을 2 개 만든다.
+mysql server를 실행 할 파일에는
+
+mysqld --console
+
+mysql server를 종료할 파일에는
+
+mysqladmin -u root -p shutdown
+
+이라고 적어준다.
+
+각 배치 파일에 링크를 걸어서 원하는 위치에 batch파일을 실행 시킬 수 있는 바로가기를 만든다.
+
+total commander를 사용해 여기에 alias를 걸어서 windows 실행 창에서 바로 mysql server를 켜고 끄게 해 보자.
+
