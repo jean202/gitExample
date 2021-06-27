@@ -85,48 +85,101 @@ cmd에서 환경변수 확인하는 명령어
 
 -> Zip Archive 파일의 압축 해제 폴더에 data    폴더가 생겼는지 확인한다.
 
-<<<<<<< HEAD
 => data폴더 안의 "컴퓨터 이름".err파일에 root계정의 초기 임시 비밀번호가 설정되어 있다.
-=======
+
 (6) 주의사항
->>>>>>> 00455099b9763feb24d177ca505a52f78fadcb71
+
 
 -> 데몬 초기화를 console로 확인하면서 root계정의 초기 비밀번호도 같이 확인하고 싶을 때에는
 
-<<<<<<< HEAD
+
     mysqld --initialize --console
 
 명령어를 사용하면 콘솔에 로그를 볼 수 있다.
 
 (단, 이 경우에는 "컴퓨터이름".err파일에 초기 비밀번호 로그가 남지 않으므로 주의하도록 하자)
 
-`3) Mysql 실행 파일로 구동시키기(서비스 사용X)`
+`3) Mysql 실행 파일로 구동시키기`
 
-=======
--> 이것은 windows service에 등록하는 방식이다. noinstall상태로 쓰기로 하였으니 이것은 제외하도록 하자.
 
-'''
+- 서비스 사용을 위한 windows service 등록
 
-3) Mysql 실행 파일로 구동시키기(서비스 사용X)
+    mysqld --install
 
->>>>>>> 00455099b9763feb24d177ca505a52f78fadcb71
-Windows 서비스를 사용하지 않고도 Mysql Server를 구동시킬 수 있다.
+-> noinstall상태로 쓰기로 하였으니 이 과정은 제외하도록 하자.
+
+
+
+- Windows 서비스를 사용하지 않고도 Mysql Server를 구동시킬 수 있다.
 
 CLI환경 (명령 프롬프트)에서 진행하며,
 공식 문서(https://dev.mysql.com/doc/refman/8.0/en/windows-install-archive.html)
 를 참고하였다.
 
-mysqld 명령어를 쳤을 때 mysql server가 동작하고 있는지 확인하기
+====
+To start the server, enter this command:
+
+서버를 시작하고 싶을 때에는, 다음 명령어를 사용하세요:
+
+    C:\> "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld" --console
+
+For a server that includes InnoDB support, you should see the messages similar to those following as it starts (the path names and sizes may differ):
+
+InnoDB를 제공하는 서버를 시작할 때 당신은 이와 비슷한 메시지를 볼 수 있어야 합니다:
+
+    InnoDB: The first specified datafile c:\ibdata\ibdata1 did not exist:
+    InnoDB: a new database to be created!
+    InnoDB: Setting file c:\ibdata\ibdata1 size to 209715200
+    InnoDB: Database physically writes the file full: wait...
+    InnoDB: Log file c:\iblogs\ib_logfile0 did not exist: new to be created
+    InnoDB: Setting log file c:\iblogs\ib_logfile0 size to 31457280
+    InnoDB: Log file c:\iblogs\ib_logfile1 did not exist: new to be created
+    InnoDB: Setting log file c:\iblogs\ib_logfile1 size to 31457280
+    InnoDB: Log file c:\iblogs\ib_logfile2 did not exist: new to be created
+    InnoDB: Setting log file c:\iblogs\ib_logfile2 size to 31457280
+    InnoDB: Doublewrite buffer not found: creating new
+    InnoDB: Doublewrite buffer created
+    InnoDB: creating foreign key constraint system tables
+    InnoDB: foreign key constraint system tables created
+    011024 10:58:25  InnoDB: Started
+
+When the server finishes its startup sequence, you should see something like this, which indicates that the server is ready to service client connections:
+
+서버가 실행 시퀀스를 마치면, 서버가 서비스 클라이언트 연결을 할 준비가 되어 있다는
+내용이 이와 같이 나와 있는 설명을 볼 수 있습니다:
+
+
+    mysqld: ready for connections
+    Version: '8.0.25'  socket: ''  port: 3306
+
+The server continues to write to the console any further
+diagnostic output it produces. You can open a new console
+window in which to run client programs.
+
+이어서 서버는 콘솔에 특수한 결과물을 출력할 수 있습니다.
+클라이언트 프로그램을 실행시킬 새로운 윈도우 콘솔을 실행합니다.
+
+If you omit the --console option, the server writes diagnostic
+output to the error log in the data directory
+(C:\Program Files\MySQL\MySQL Server 8.0\data by default).
+The error log is the file with the .err extension,
+and may be set using the --log-error option.
+
+당신이 --console 명령어를 생략한다면, 서버는 특수한 결과물을 data 폴더에 있는
+err log파일에 출력합니다.
+====
+mysqld(mysqld --console) 명령어를 쳤을 때 mysql server가 동작하고 있는지 확인하기
 
 -> mysql server에 할당된 포트번호(기본값 3306)가 열려 있는지 확인한다.
 
 특정 포트가 열려있는지 확인하는 방법
-특정 포트 열려있는지 확인하는 명령어
+
+- 특정 포트 열려있는지 확인하는 명령어
 
     netstat -ano | findstr :3306(mysql server port)
 
-telnet [IP 또는 도메인] [포트]
-
+- telnet [IP 또는 도메인] [포트]
+-> 결과물
 [source,shell]
 ----
 J
@@ -141,15 +194,20 @@ C:\Windows\system32>
 
 → 이런 결과가 나오면 정상이다(뭐라도 나오면 열려있는것). Connection lost라고 나오는 이유는 제대로 된 정보를 가지고 3306port 에 접근한 것이 아니기 때문에 연결에 실패하게 되는 것이다.
 
+- curl로 확인 : API호출을 해서 tcp로 한번 찔러본다.
 
+'''
+mysql client 실행시키기
 
-curl로 확인 : API호출을 해서 tcp로 한번 찔러본다.
+1. root 사용자 비밀번호 재설정~~
 
-root 사용자 비밀번호 재설정~~
+2. client의 mysql 서버 접속
 
-mysql에서 exit로 빠져나오고
+3. client의 mysql 서버 탈출
+에서 exit로 빠져나오고
 
-mysql종료시키기
+'''
+mysql 서버 종료시키기
 
     mysqladmin -u root -p shutdown
 
