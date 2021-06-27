@@ -245,3 +245,26 @@ mysqladmin -u root -p shutdown
 
 total commander를 사용해 여기에 alias를 걸어서 windows 실행 창에서 바로 mysql server를 켜고 끄게 해 보자.
 
+'''
+mac 환경에서의 mysql
+
+1) mysql 설치
+
+처음 설치할때 봤던 글
+https://twinparadox.tistory.com/619
+
+homebrew, sequel pro 사용할때 참고 가능한 글
+https://dev-r.tistory.com/17
+
+homebrew로 설치된 mysql삭제하는 방법-큰 도움이 되었음!!
+https://solbel.tistory.com/1475
+
+root 비밀번호 잊어버렸을 때 재설정 하는 방법 https://velog.io/@nari120/MySQL8-비밀번호-분실-및-변경
+
+-여기에 homebrew로 Stop하는 방법도 나와있었다
+
+제대로 안읽었던 것! ㅠㅠ
+
+'코드짜는 문과녀' 가 쓴 글 : 나에게 어떤 도움이 될지는 모르겠지만
+https://eunhee-programming.tistory.com/10
+
